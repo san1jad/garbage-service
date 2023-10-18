@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: GARBAGE-SERVICE
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost}:3306/dev
+    username: root
+    password: root
+  profiles:
+    active: local
+  config:
+    import: configserver:http://localhost:9296
+
+server:
+  port: 9091
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      external:
+        eventConsumerBufferSize: 10
+        failureRateThreshold: 50
+        minimumNumberOfCalls: 5
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowSize: 10
+        slidingWindowType: COUNT_BASED

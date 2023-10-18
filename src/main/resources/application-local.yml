@@ -1,0 +1,10 @@
+info:
+  service-name: "http://INFO-SERVICE"
+  disposal-methods:
+    request-path: "/disposal-methods"
+    request-to-update: "/disposal-methods/{id}"
+  items:
+    request-path: "/items"
+    request-to-update: "/items/{id}"
+
+
