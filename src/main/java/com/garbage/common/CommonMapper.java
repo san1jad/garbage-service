@@ -4,7 +4,6 @@ import com.common.vo.garbage.ElectronicsGarbageVO;
 import com.garbage.api.OpenFeignInfoServiceCalls;
 import com.garbage.entity.ElectronicsGarbage;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -14,12 +13,8 @@ import java.util.Optional;
 @Log4j2
 public class CommonMapper {
 
-    @Autowired
-    private final OpenFeignInfoServiceCalls openFeignInfoServiceCalls;
+    private OpenFeignInfoServiceCalls openFeignInfoServiceCalls;
 
-    public CommonMapper(OpenFeignInfoServiceCalls openFeignInfoServiceCalls) {
-        this.openFeignInfoServiceCalls = openFeignInfoServiceCalls;
-    }
 
     public void mapElectronicsGarbageObj(ElectronicsGarbage newElectronicsGarbage, ElectronicsGarbage existingElectronicsGarbage) {
         existingElectronicsGarbage.setDisposalMethodId(newElectronicsGarbage.getDisposalMethodId());

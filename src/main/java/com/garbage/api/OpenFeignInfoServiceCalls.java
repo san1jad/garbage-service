@@ -19,7 +19,7 @@ public interface OpenFeignInfoServiceCalls {
     @GetMapping("/items/{id}")
     public ResponseEntity<ItemVO> getItemById(@PathVariable Long id);
 
-    default void fallback(Exception e){
+    default ResponseEntity<Long> fallback(Exception e){
         throw new HandledInternalServerException("Info service is not available right now. Please try again later !!");
     }
 }

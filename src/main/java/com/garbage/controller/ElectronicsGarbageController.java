@@ -32,6 +32,7 @@ public class ElectronicsGarbageController {
         this.electronicsGarbageService = electronicsGarbageService;
     }
 
+   // @PreAuthorize("hasAuthority('Admin') || hasAuthority('Customer') || hasAuthority('SCOPE_internal')")
     @GetMapping
     @Observed(
             name = "GARBAGE",
@@ -44,6 +45,7 @@ public class ElectronicsGarbageController {
                 .orElseThrow(() -> new HandledInternalServerException("Garbage form data not found any"));
     }
 
+    //@PreAuthorize("hasAuthority('Admin') || hasAuthority('Customer') || hasAuthority('SCOPE_internal')")
     @GetMapping("/{id}")
     @Observed(
             name = "GARBAGE",
@@ -54,6 +56,7 @@ public class ElectronicsGarbageController {
         return new ResponseEntity<>(electronicsGarbageService.getElectronicsGarbageById(id), HttpStatus.OK);
     }
 
+    //@PreAuthorize("hasAuthority('Admin') || hasAuthority('Customer') || hasAuthority('SCOPE_internal')")
     @PostMapping
     @Observed(
             name = "GARBAGE",
@@ -66,6 +69,7 @@ public class ElectronicsGarbageController {
                 .orElseThrow(() -> new HandledInternalServerException("Error while save garbage form data"));
     }
 
+   // @PreAuthorize("hasAuthority('Admin') || hasAuthority('Customer') || hasAuthority('SCOPE_internal')")
     @PutMapping("/{id}")
     @Observed(
             name = "GARBAGE",
